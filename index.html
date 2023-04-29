@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2048 Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>2048</h1>
+        <button id="new-game-button" onclick="resetGame()">Nueva Partida</button>
+        <div id="best-container">
+            <span id="best-label">Mejor:</span>
+            <span id="best">0</span>
+        <div id="score-container">
+            <span id="score-label">Score:</span>
+            <span id="score">0</span>
+        </div>
+    </header>
+    <div id="game-container">
+        <div id="board">
+            <!-- Tiles will be added dynamically -->
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

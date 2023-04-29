@@ -1,0 +1,116 @@
+header {
+  background-color: #00f;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+}
+header #new-game-button,
+header #best-container,
+header #score-container {
+  display: flex;
+  align-items: center;
+}
+header #new-game-button {
+  background-color: #fff;
+  color: #00f;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  margin-left: auto;
+  cursor: pointer;
+}
+header #best-container,
+header #score-container {
+  margin-left: 20px;
+}
+header #best,
+header #score {
+  font-size: 24px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+hr {
+  width: 500px;
+}
+#board {
+  width: 400px;
+  height: 400px;
+  background-color: #cdc1b5;
+  border: 6px solid #bbada0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.tile {
+  width: 90px;
+  height: 90px;
+  border: 5px solid #bbada0;
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tile.x2 {
+  background-color: #eee4da;
+  color: #727371;
+}
+.tile.x4 {
+  background-color: #ece0ca;
+  color: #727371;
+}
+.tile.x8 {
+  background-color: #f4b17a;
+  color: #fff;
+}
+.tile.x16 {
+  background-color: #f59575;
+  color: #fff;
+}
+.tile.x32 {
+  background-color: #f57c5f;
+  color: #fff;
+}
+.tile.x64 {
+  background-color: #f65d3b;
+  color: #fff;
+}
+.tile.x128 {
+  background-color: #edce71;
+  color: #fff;
+}
+.tile.x256 {
+  background-color: #edcc63;
+  color: #fff;
+}
+.tile.x512 {
+  background-color: #edc651;
+  color: #fff;
+}
+.tile.x1024 {
+  background-color: #eec744;
+  color: #fff;
+}
+.tile.x2048 {
+  background-color: #ecc230;
+  color: #fff;
+}
+.tile.x4096 {
+  background-color: #fe3d3d;
+  color: #fff;
+}
+.tile.x8192 {
+  background-color: #ff2020;
+  color: #fff;
+}
