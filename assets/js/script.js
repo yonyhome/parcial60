@@ -2,7 +2,7 @@ var board = [];
 var score = 0;
 var rows = 4;
 var columns = 4;
-
+//cuando se carga la pagina se ejecuta la funcion setGame y actualiza el mejor puntaje
 window.onload = function() {
   setGame();
   const best = localStorage.getItem("best");
@@ -10,6 +10,8 @@ window.onload = function() {
     document.getElementById("best").textContent = best;
   }
 }
+
+//funcion para comparar si el resultado actual es mejor que el mejor puntaje
 function updateBest(score) {
     const best = parseInt(localStorage.getItem("best")) || 0;
     if (score > best && score < 2048) {
@@ -19,8 +21,10 @@ function updateBest(score) {
         console.log("best: " + localStorage.getItem("best"));
     }
   }
+
+// Reiniciar el tablero y el marcador
 function resetGame() {
-  // Reiniciar el tablero
+  
   board = [    [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -33,7 +37,7 @@ function resetGame() {
   // Actualizar el marcador en la página
   document.getElementById("score").innerText = score;
 
-  // Actualizar los azulejos en la página
+  // Actualizar las fichas en la página
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < columns; c++) {
       let tile = document.getElementById(r.toString() + "-" + c.toString());
@@ -42,11 +46,12 @@ function resetGame() {
     }
   }
 
-  // Generar dos nuevos azulejos
+  // Generar dos nuevas fichas
   setTwo();
   setTwo();
 }
 
+//carga inicial del juego, inicializa el tablero y genera dos fichas aleatorias
 function setGame() {
   for (let r = 0; r < rows; r++) {
     board[r] = Array(columns).fill(0);
@@ -63,9 +68,10 @@ function setGame() {
   setTwo();
 }
 
+//
 function updateTile(tile, num) {
   tile.innerText = "";
-  tile.classList.value = ""; //clear the classList
+  tile.classList.value = ""; 
   tile.classList.add("tile");
   if (num > 0) {
     tile.innerText = num.toString();
@@ -76,6 +82,8 @@ function updateTile(tile, num) {
     }                
   }
 }
+//leer los movimientos del teclado y llamar a las funciones correspondientes de movimientos
+//los movimientos se realizan con las flechas del teclado(izquierda, derecha, arriba, abajo)
 
 document.addEventListener('keyup', (e) => {
   if (e.code == "ArrowLeft") {
@@ -99,7 +107,7 @@ document.addEventListener('keyup', (e) => {
 function filterZero(row) {
   return row.filter(num => num != 0); 
 }
-
+//movimiento de las ficha
 function slide(row) {
   row = filterZero(row); 
   for (let i = 0; i < row.length - 1; i++){
@@ -116,7 +124,7 @@ function slide(row) {
   } 
   return row;
 }
-
+//movimiento a la izquierda
 function slideLeft() {
     for (let r = 0; r < rows; r++) {
         let row = board[r];
@@ -129,6 +137,7 @@ function slideLeft() {
         }
     }
 }
+//movimiento a la derecha
 
 function slideRight() {
     for (let r = 0; r < rows; r++) {
@@ -143,6 +152,7 @@ function slideRight() {
         }
     }
 }
+//movimiento arriba
 
 function slideUp() {
     for (let c = 0; c < columns; c++) {
@@ -156,6 +166,8 @@ function slideUp() {
         }
     }
 }
+
+//movimiento abajo
 
 function slideDown() {
     for (let c = 0; c < columns; c++) {
@@ -172,6 +184,7 @@ function slideDown() {
     }
 }
 
+//generar fichas aleatorias
 function setTwo() {
     if (!hasEmptyTile()) {
         return;
@@ -189,16 +202,21 @@ function setTwo() {
         }
     }
 }
-
+//verificar si hay fichas vacias para poder crear otra nuevas
 function hasEmptyTile() {
     let count = 0;
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
-            if (board[r][c] == 0) { //at least one zero in the board
+            if (board[r][c] == 0) { 
                 return true;
             }
         }
     }
+    //se acaba el juego si no se pueden generar mas fichas
+    if (count == 0) {
+        alert("Tablero lleno, reinicia la partida");
+    }
     return false;
 }
+
 
